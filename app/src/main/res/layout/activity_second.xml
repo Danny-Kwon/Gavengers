@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_500"
+    tools:context=".activity.SecondActivity">
+
+    <Button
+        android:id="@+id/kakao_logout_button"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/nixgon_m"
+        android:shadowColor="#00B0FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:text="로그아웃"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/kakao_unlink_button"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/change_device"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/nixgon_m"
+        android:shadowColor="#00B0FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:text="기기변경"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/clock"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <Button
+        android:id="@+id/kakao_unlink_button"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="32dp"
+
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/nixgon_m"
+        android:shadowColor="#00B0FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:text="회원 탈퇴"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/nixgon_m"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/setting"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:srcCompat="@drawable/ic_baseline_timer_24" />
+
+    <ImageButton
+        android:id="@+id/setOff"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:srcCompat="@drawable/ic_baseline_timer_off_24" />
+
+    <ImageView
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/kakao_logout_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nickname"
+        app:srcCompat="@drawable/shape" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="65dp" />
+
+    <TextView
+        android:id="@+id/view_hour"
+        android:layout_width="71dp"
+        android:layout_height="135dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/clock"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/clock"
+        app:layout_constraintTop_toTopOf="@+id/clock"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/text_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_hour"
+        app:layout_constraintEnd_toEndOf="@+id/view_hour"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toStartOf="@+id/view_hour"
+        app:layout_constraintTop_toTopOf="@+id/view_hour"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/text_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="분"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_minute"
+        app:layout_constraintEnd_toEndOf="@+id/view_minute"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/view_minute"
+        app:layout_constraintTop_toTopOf="@+id/view_minute"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/clock"
+        app:layout_constraintEnd_toEndOf="@+id/clock"
+        app:layout_constraintStart_toStartOf="@+id/clock"
+        app:layout_constraintTop_toTopOf="@+id/clock" />
+
+    <TextView
+        android:id="@+id/view_minute"
+        android:layout_width="71dp"
+        android:layout_height="135dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/clock"
+        app:layout_constraintEnd_toEndOf="@+id/clock"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/clock"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="211dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="488dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="581dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="276dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="137dp" />
+
+    <ImageButton
+        android:id="@+id/dbView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:layout_constraintVertical_bias="0.84"
+        app:srcCompat="@drawable/ic_baseline_list_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
