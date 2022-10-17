@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
-        val login_button = binding.loginButton
-        login_button.setOnClickListener {
+        val loginButton = binding.loginButton
+        loginButton.setOnClickListener {
             if(LoginClient.instance.isKakaoTalkLoginAvailable(this)){
                 LoginClient.instance.loginWithKakaoTalk(this, callback = callback)
             }else{

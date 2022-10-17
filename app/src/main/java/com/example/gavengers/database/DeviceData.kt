@@ -10,5 +10,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class DeviceData(
     @PrimaryKey var deviceId: String,
-    @ColumnInfo var userId: String,
+    @ColumnInfo var userId: String?,
 ):Parcelable

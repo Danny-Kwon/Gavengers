@@ -48,21 +48,22 @@ class DeviceActivity : AppCompatActivity() {
                 Log.d("카카오 토큰", "에러 발생")
             }else if(tokenInfo != null){
                 tok = tokenInfo.id.toString()
+                Log.d("카카오 토큰", "$tok")
             }
         }
 
-        val data1 = User(tok)
-        api.login(data1).enqueue(object : Callback<Responsed> {
-            override fun onResponse(call: Call<Responsed>, response: Response<Responsed>) {
+        val data1 = User(userPk = tok)
+        api.registerUser(data1).enqueue(object : Callback<OkSign> {
+            override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {
                 Log.d("log", response.toString())
                 Log.d("log", response.body().toString())
                 if (response.body().toString().isNotEmpty())
                     Log.d("log", response.toString())
             }
-            override fun onFailure(call: Call<Responsed>, t: Throwable) {
+            override fun onFailure(call: Call<OkSign>, t: Throwable) {
                 // 실패
                 Log.d("log", t.message.toString())
-                Log.d("log", "User Post Fail")
+                Log.d("registerUser", "Fail")
             }
         })
 
@@ -74,20 +75,38 @@ class DeviceActivity : AppCompatActivity() {
             addItemDecoration(divider)
         }
         viewModel = ViewModelProvider(this)[DeviceViewModel::class.java]
-        viewModel.getAllIdsObservers().observe(this, Observer {
+        viewModel.getAllIdsObservers().observe(this) {
             recyclerViewAdapter.setListData(ArrayList(it))
             recyclerViewAdapter.notifyDataSetChanged()
-        })
+        }
 
         viewModel.getAllIds()
 
         binding.deviceAccess.setOnClickListener {
             //기기 접속 버튼
             val id: String = binding.deviceInput.text.toString()
-            prefs.setString("ConnectedID", id)
-            Toast.makeText(this, "$id 기기로 접속합니다.", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
+            val data = UserDevice(userPk = tok, deviceId = id)
+            api.registerUserdevice(data).enqueue(object : Callback<OkSign> {
+                override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {
+                    Log.d("log", response.toString())
+                    Log.d("log", response.body().toString())
+                    when(response.body().toString()){
+                        "Ok" -> Toast.makeText(applicationContext, "서버에는 등록되었지만 App에는 등록되지 않은 기기입니다.", Toast.LENGTH_SHORT).show()
+                        "deviceDuplicate" -> {
+                            prefs.setString("ConnectedID", id)
+                            Toast.makeText(applicationContext, "$id 기기로 접속합니다.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(applicationContext, SecondActivity::class.java)
+                            startActivity(intent)
+                        }
+                        "deviceNotFound" -> Toast.makeText(applicationContext, "서버에 저장되지 않은 기기입니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                override fun onFailure(call: Call<OkSign>, t: Throwable) {
+                    // 실패
+                    Log.d("log", t.message.toString())
+                    Log.d("registerUserDevice", "fail")
+                }
+            })
         }
 
         binding.addDv.setOnClickListener {
@@ -101,7 +120,6 @@ class DeviceActivity : AppCompatActivity() {
                 setView(builderItem.root)
                 setPositiveButton("확인"){ _:DialogInterface, _: Int ->
                     if(edittext.text!=null) {
-                        Toast.makeText(context, "${edittext.text}기기 추가됨", Toast.LENGTH_SHORT).show()
                         deviceToDB(tok, edittext.text.toString())
                         nickname?.let { it1 ->
                             DeviceData(edittext.text.toString(),
@@ -148,35 +166,41 @@ class DeviceActivity : AppCompatActivity() {
     }
 
     private fun deviceToDB(tok: String?, ID: String?){
-        val data = UserDevice(userId = tok, deviceId = ID)
-        api.post_users(data).enqueue(object : Callback<Responsed> {
-            override fun onResponse(call: Call<Responsed>, response: Response<Responsed>) {
+        val data = UserDevice(userPk = tok, deviceId = ID)
+        api.registerUserdevice(data).enqueue(object : Callback<OkSign> {
+            override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {
                 Log.d("log", response.toString())
                 Log.d("log", response.body().toString())
-                if (response.body().toString().isNotEmpty())
-                    Log.d("log", response.toString())
+                when(response.body().toString()){
+                    "Ok" -> {
+                        Log.d("log", response.toString())
+                        Toast.makeText(applicationContext, "기기가 등록 되었습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                    "deviceDuplicate" -> Toast.makeText(applicationContext, "이미 저장된 기기입니다.", Toast.LENGTH_SHORT).show()
+                    "deviceNotFound" -> Toast.makeText(applicationContext, "서버에 저장되지 않은 기기입니다.", Toast.LENGTH_SHORT).show()
+                }
             }
-            override fun onFailure(call: Call<Responsed>, t: Throwable) {
+            override fun onFailure(call: Call<OkSign>, t: Throwable) {
                 // 실패
                 Log.d("log", t.message.toString())
-                Log.d("log", "POST fail")
+                Log.d("registerUserDevice", "fail")
             }
         })
     }
 
     private fun removeDevice(tok: String?, ID: String?){
-        val data = UserDevice(userId = tok, deviceId = ID)
-        api.delete_device(data).enqueue(object : Callback<Responsed>{
-            override fun onResponse(call: Call<Responsed>, response: Response<Responsed>){
+        val data = UserDevice(userPk = tok, deviceId = ID)
+        api.deleteUserOption(data).enqueue(object : Callback<OkSign>{
+            override fun onResponse(call: Call<OkSign>, response: Response<OkSign>){
                 Log.d("log", response.toString())
                 Log.d("log", response.toString())
                 if (response.body().toString().isNotEmpty())
                     Log.d("log", response.toString())
             }
-            override fun onFailure(call: Call<Responsed>, t: Throwable) {
+            override fun onFailure(call: Call<OkSign>, t: Throwable) {
                 // 실패
                 Log.d("log", t.message.toString())
-                Log.d("log", "POST fail")
+                Log.d("deleteUserOption", "fail")
             }
         })
     }

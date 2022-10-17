@@ -71,15 +71,15 @@ class SecondActivity: AppCompatActivity() {
         val kakaoUnlinkButton = binding.kakaoUnlinkButton // 회원 탈퇴 버튼
 
         kakaoUnlinkButton.setOnClickListener {
-            val data = User(userId = tok)
-            api.close_account(data).enqueue(object : Callback<Responsed>{
-                override fun onResponse(call: Call<Responsed>, response: Response<Responsed>) {
-                    Log.d("log", "UNLINK success")
+            val data = User(userPk = tok)
+            api.deleteUser(data).enqueue(object : Callback<OkSign>{
+                override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {
+                    Log.d("deleteUser", "fail")
                     if (response.body().toString().isNotEmpty())
                         Log.d("log", response.toString())
                 }
-                override fun onFailure(call: Call<Responsed>, t: Throwable) {
-                    Log.d("log", "UNLINK failure")
+                override fun onFailure(call: Call<OkSign>, t: Throwable) {
+                    Log.d("deleteUser", "fail")
                 }
             })
             UserApiClient.instance.unlink { error ->
