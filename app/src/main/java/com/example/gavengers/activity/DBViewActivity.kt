@@ -86,20 +86,20 @@ class DBViewActivity : AppCompatActivity() {
         val prefs = PreferencesUtil(applicationContext)
         val devID = prefs.getString("ConnectedID", "ID Error")
         val api = APIS.create()
-        api.searchApp(Device(deviceId = devID)).enqueue(object : Callback<List<Sensing>>{
+        api.searchApp(Device(deviceId = devID)).enqueue(object : Callback<ArrayList<Sensing>>{
             override fun onResponse(
-                call: Call<List<Sensing>>,
-                response: Response<List<Sensing>>
+                call: Call<ArrayList<Sensing>>,
+                response: Response<ArrayList<Sensing>>
             ) {
                 if(response.isSuccessful){
                     val body = response.body()
                     body?.let{
-                        setAdapter(ArrayList())
+                        setAdapter(it)
                         Toast.makeText(applicationContext, "값 호출 성공", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
-            override fun onFailure(call: Call<List<Sensing>>, t: Throwable) {
+            override fun onFailure(call: Call<ArrayList<Sensing>>, t: Throwable) {
                 t.message?.let { Log.d("API Error", it) }
             }
         })

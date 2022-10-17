@@ -1,5 +1,6 @@
 package com.example.gavengers.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,11 +27,12 @@ class RetroViewAdapter(private val deviceList: ArrayList<Sensing>, val context: 
         private val timeInfo = binding.timeInfo
         private val inOutInfo = binding.inOutInfo
         private val powerInfo = binding.powerInfo
+        @SuppressLint("SetTextI18n")
         fun bind(device: Sensing) {
-            deviceId.text = device.deviceId
-            timeInfo.text = device.date
-            inOutInfo.text = device.state
-            powerInfo.text = device.power
+            deviceId.text = "기기아이디: " + device.deviceId
+            timeInfo.text = "출입 시간: " + device.date
+            inOutInfo.text = "출입 방향: " + device.state
+            powerInfo.text = "전원: " + device.power
         }
     }
 }
