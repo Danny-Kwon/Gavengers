@@ -22,7 +22,7 @@ class DBViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         val prefs = PreferencesUtil(applicationContext)
-        val devID = prefs.getString("ConnectedId", "ID Error")
+        val devID = prefs.getString("ConnectedID", "ID Error")
         val api = APIS.create()
         loadAPIData()
 
@@ -35,7 +35,7 @@ class DBViewActivity : AppCompatActivity() {
             api.searchRx(data).enqueue(object: Callback<Rx>{ // 수신 배터리
                 override fun onResponse(call: Call<Rx>, response: Response<Rx>) {
                     if(response.body().toString().isNotEmpty()){
-                        prefs.setString("RX", response.body()?.Rx.toString())
+                        prefs.setString("RX", response.body()?.rx.toString())
                     }
                 }
                 override fun onFailure(call: Call<Rx>, t: Throwable) {
@@ -45,7 +45,7 @@ class DBViewActivity : AppCompatActivity() {
             api.searchTx(data).enqueue(object: Callback<Tx>{ // 송신 배터리
                 override fun onResponse(call: Call<Tx>, response: Response<Tx>) {
                     if(response.body().toString().isNotEmpty()){
-                        prefs.setString("Tx", response.body()?.Tx.toString())
+                        prefs.setString("TX", response.body()?.tx.toString())
                     }
                 }
                 override fun onFailure(call: Call<Tx>, t: Throwable) {
@@ -62,7 +62,7 @@ class DBViewActivity : AppCompatActivity() {
             api.searchPower(data).enqueue(object: Callback<Power>{
                 override fun onResponse(call: Call<Power>, response: Response<Power>) {
                     if(response.body().toString().isNotEmpty()){
-                        Toast.makeText(applicationContext, "전원: ${response.body()?.Power.toString()}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "전원: ${response.body()?.power.toString()}", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<Power>, t: Throwable) {
@@ -76,7 +76,7 @@ class DBViewActivity : AppCompatActivity() {
         }
     }
 
-    private fun setAdapter(deviceList: ArrayList<DeviceInfo>) {
+    private fun setAdapter(deviceList: ArrayList<Sensing>) {
         val mAdapter = RetroViewAdapter(deviceList, applicationContext)
         binding.deviceRv.adapter = mAdapter
         binding.deviceRv.layoutManager = LinearLayoutManager(this)
@@ -84,7 +84,7 @@ class DBViewActivity : AppCompatActivity() {
 
     private fun loadAPIData(){
         val prefs = PreferencesUtil(applicationContext)
-        val devID = prefs.getString("ConnectedId", "ID Error")
+        val devID = prefs.getString("ConnectedID", "ID Error")
         val api = APIS.create()
         api.searchApp(Device(deviceId = devID)).enqueue(object : Callback<DeviceListModel>{
             override fun onResponse(
@@ -94,7 +94,7 @@ class DBViewActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     val body = response.body()
                     body?.let{
-                        setAdapter(it.items)
+                        setAdapter(it.obj)
                         Toast.makeText(applicationContext, "값 호출 성공", Toast.LENGTH_SHORT).show()
                     }
                 }

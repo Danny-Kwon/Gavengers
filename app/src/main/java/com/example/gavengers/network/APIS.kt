@@ -11,49 +11,49 @@ import retrofit2.http.Headers
 import retrofit2.http.*
 
 interface APIS {
-    @POST("register/user") // 카카오 로그인시 사용자 PK값 전송
+    @POST("register/user") // 카카오 로그인시 사용자 PK값 전송 (성공)
     @Headers("accept: application/json",
         "content-type: application/json")
     fun registerUser(
         @Body jsonparams: User
     ): Call<OkSign>
 
-    @POST("register/userdevice") // 어플내에서 DeviceId 입력
+    @POST("register/userdevice") // 어플내에서 DeviceId 입력 (성공)
     @Headers("accept: application/json",
         "content-type: application/json")
     fun registerUserdevice(
         @Body jsonparams: UserDevice
     ): Call<OkSign>
 
-    @POST("delete/user") // 회원 탈퇴시 API, DeviceId 도 전체 다 삭제됨
+    @POST("delete/user") // 회원 탈퇴시 API, DeviceId 도 전체 다 삭제됨 (성공)
     @Headers("accept: application/json",
         "content-type: application/json")
     fun deleteUser(
         @Body jsonparams: User
     ): Call<OkSign>
 
-    @POST("delete/user/option") // 선택한 DeviceId 만 삭제됨
+    @POST("delete/user/option") // 선택한 DeviceId 만 삭제됨 (성공)
     @Headers("accept: application/json",
         "content-type: application/json")
     fun deleteUserOption(
         @Body jsonparams: UserDevice
     ): Call<OkSign>
 
-    @POST("search/rxbattery") // rx배터리
+    @POST("search/rxbattery") // rx배터리 (성공)
     @Headers("accept: application/json",
         "content-type: application/json")
     fun searchRx(
         @Body jsonparams: Device
     ): Call<Rx>
 
-    @POST("search/txbattery") // tx배터리
+    @POST("search/txbattery") // tx배터리 (성공)
     @Headers("accept: application/json",
         "content-type: application/json")
     fun searchTx(
         @Body jsonparams: Device
     ): Call<Tx>
 
-    @POST("search/power") // 전원 유무 확인
+    @POST("search/power") // 전원 유무 확인 (성공)
     @Headers("accept: application/json",
         "content-type: application/json")
     fun searchPower(
@@ -68,12 +68,13 @@ interface APIS {
     ): Call<DeviceListModel>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
-        private const val BASE_URL = "http://172.20.10.6:8080/" // 주소
+        private const val BASE_URL = "http://192.168.210.180:8080/" // 주소
 
         fun create(): APIS {
             val gson :Gson = GsonBuilder().setLenient().create()
-            val ret : APIS = Retrofit.Builder()
+            val ret :APIS= Retrofit.Builder()
                 .baseUrl(BASE_URL)
+//                .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(APIS::class.java)

@@ -40,12 +40,7 @@ class SecondActivity: AppCompatActivity() {
         createNotificationChannel()
         devID = prefs.getString("ConnectedID", "0")
         setContentView(binding.root)
-        var tok: String? = null
-        UserApiClient.instance.accessTokenInfo { tokenInfo, _ ->
-            if (tokenInfo != null) {
-                tok = tokenInfo.id.toString()
-            }
-        }
+        var tok: String = prefs.getString("tok", "Token Error")
 
         val changeDevice = binding.changeDevice
         changeDevice.setOnClickListener{
@@ -75,7 +70,7 @@ class SecondActivity: AppCompatActivity() {
             api.deleteUser(data).enqueue(object : Callback<OkSign>{
                 override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {
                     Log.d("deleteUser", "fail")
-                    if (response.body().toString().isNotEmpty())
+                    if (response.body()?.okSign.toString().isNotEmpty())
                         Log.d("log", response.toString())
                 }
                 override fun onFailure(call: Call<OkSign>, t: Throwable) {
