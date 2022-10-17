@@ -65,7 +65,7 @@ interface APIS {
         "content-type: application/json")
     fun searchApp(
         @Body jsonparams: Device
-    ): Call<DeviceListModel>
+    ): Call<List<Sensing>>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         private const val BASE_URL = "http://192.168.210.180:8080/" // 주소
