@@ -37,6 +37,16 @@ class SecondActivity: AppCompatActivity() {
         val prefs = PreferencesUtil(applicationContext)
         devID = prefs.getString("ConnectedID", "0")
         setContentView(binding.root)
+
+        when(prefs.getString("Turn", "Off")){
+            "On" -> {
+                binding.viewHour.text = prefs.getInt("hour", 12).toString()
+                binding.viewMinute.text = prefs.getInt("minute", 30).toString()
+            }
+            "Off" -> {
+                Toast.makeText(this, "현재 설정된 알람 없음.", Toast.LENGTH_SHORT).show()
+            }
+        }
         val tok: String = prefs.getString("tok", "Token Error")
 
         val changeDevice = binding.changeDevice
@@ -97,6 +107,7 @@ class SecondActivity: AppCompatActivity() {
         val settingButton = binding.setting // 알람 설정버튼, 고른 시간으로 알람 진행
         settingButton.setOnClickListener {
             setAlarm(prefs.getInt("hour", 12), prefs.getInt("minute", 30))
+            prefs.setString("Turn", "On")
             binding.viewHour.text = prefs.getInt("hour", 12).toString()
             binding.viewMinute.text = prefs.getInt("minute", 30).toString()
         }
@@ -107,6 +118,7 @@ class SecondActivity: AppCompatActivity() {
             with(builder){
                 setTitle("알람을 정말 취소하시겠습니까?")
                 setPositiveButton("확인"){ _: DialogInterface, _: Int ->
+                    prefs.setString("Turn", "Off")
                     cancelAlarm()
                 }
                 setNegativeButton("취소"){_: DialogInterface, _: Int ->
@@ -166,7 +178,7 @@ class SecondActivity: AppCompatActivity() {
         val confirm : Button = mView.findViewById(R.id.btn_settime_ok)
         val cancel : Button = mView.findViewById(R.id.btn_settime_no)
         with(hour){
-            value = set
+            value = prefs.getInt("hour", 0)
             minValue = 0
             maxValue = 23
             wrapSelectorWheel = false
@@ -177,7 +189,7 @@ class SecondActivity: AppCompatActivity() {
             }
         }
         with(min){
-            value = set2
+            value = prefs.getInt("minute", 0)
             minValue = 0
             maxValue = 59
             wrapSelectorWheel = false
