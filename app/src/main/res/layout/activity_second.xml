@@ -4,23 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+    android:background="@color/teal_200"
     tools:context=".activity.SecondActivity">
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/LL4"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:text="알람 설정"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:fontFamily="@font/nixgon_b"
+            android:background="#90CAF9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/nixgon_m"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LL4" />
     <Button
         android:id="@+id/kakao_logout_button"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
 
-        android:background="@drawable/button_style"
+        android:background="@drawable/ripple_custom"
         android:fontFamily="@font/nixgon_m"
         android:shadowColor="#00B0FF"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="3"
         android:text="로그아웃"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/kakao_unlink_button"
         app:layout_constraintHorizontal_bias="0.498"
@@ -32,14 +61,14 @@
         android:layout_width="120dp"
         android:layout_height="40dp"
 
-        android:background="@drawable/button_style"
+        android:background="@drawable/ripple_custom"
         android:fontFamily="@font/nixgon_m"
         android:shadowColor="#00B0FF"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="3"
         android:text="기기변경"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/clock"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -52,33 +81,21 @@
         android:layout_height="40dp"
         android:layout_marginBottom="32dp"
 
-        android:background="@drawable/button_style"
+        android:background="@drawable/ripple_custom"
         android:fontFamily="@font/nixgon_m"
         android:shadowColor="#00B0FF"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="3"
         android:text="회원 탈퇴"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
-        android:id="@+id/nickname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/nixgon_m"
-        android:text=""
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageButton
         android:id="@+id/setting"
@@ -121,10 +138,12 @@
 
     <TextView
         android:id="@+id/view_hour"
-        android:layout_width="71dp"
-        android:layout_height="135dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text=""
-        android:textColor="@color/white"
+        android:textColor="#424242"
+        android:fontFamily="@font/nixgon_b"
         android:textSize="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/clock"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
@@ -137,35 +156,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="시"
-        android:textColor="@color/white"
+        android:textColor="#424242"
+        android:fontFamily="@font/nixgon_b"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_hour"
-        app:layout_constraintEnd_toEndOf="@+id/view_hour"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toStartOf="@+id/view_hour"
-        app:layout_constraintTop_toTopOf="@+id/view_hour"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/view_hour"
+        app:layout_constraintEnd_toEndOf="@+id/view_hour"/>
 
     <TextView
         android:id="@+id/text_minute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="분"
-        android:textColor="@color/white"
+        android:textColor="#424242"
+        android:fontFamily="@font/nixgon_b"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_minute"
-        app:layout_constraintEnd_toEndOf="@+id/view_minute"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/view_minute"
-        app:layout_constraintTop_toTopOf="@+id/view_minute"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/view_minute"
+        app:layout_constraintEnd_toEndOf="@+id/view_minute"/>
 
     <TextView
         android:id="@+id/colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=":"
-        android:textColor="@color/white"
+        android:textColor="#424242"
+        android:fontFamily="@font/nixgon_b"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/clock"
         app:layout_constraintEnd_toEndOf="@+id/clock"
@@ -174,10 +188,12 @@
 
     <TextView
         android:id="@+id/view_minute"
-        android:layout_width="71dp"
-        android:layout_height="135dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text=""
-        android:textColor="@color/white"
+        android:textColor="#424242"
+        android:textAlignment="center"
+        android:fontFamily="@font/nixgon_b"
         android:textSize="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/clock"
         app:layout_constraintEnd_toEndOf="@+id/clock"
@@ -198,14 +214,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="488dp" />
+        app:layout_constraintGuide_begin="441dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="581dp" />
+        app:layout_constraintGuide_begin="523dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
@@ -220,7 +236,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="137dp" />
-
     <ImageButton
         android:id="@+id/dbView"
         android:layout_width="50dp"
