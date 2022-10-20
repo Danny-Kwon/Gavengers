@@ -131,8 +131,8 @@ class SecondActivity: AppCompatActivity() {
         val intent = Intent(this, AlarmReceiver::class.java)
         val calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
-                set(Calendar.HOUR_OF_DAY, hour)
-                set(Calendar.MINUTE, minute)
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, minute)
         }
         pendingIntent = PendingIntent.getBroadcast(this,0,intent,
             PendingIntent.FLAG_IMMUTABLE)
@@ -190,7 +190,6 @@ class SecondActivity: AppCompatActivity() {
         }
         confirm.setOnClickListener{
             Toast.makeText(this, "설정된 알람: ${hour.value} 시 ${min.value} 분", Toast.LENGTH_SHORT).show()
-            cancelAlarm()
             setAlarm(prefs.getInt("hour", 12), prefs.getInt("min", 30))
             build.dismiss()
         }
