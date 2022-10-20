@@ -23,7 +23,7 @@ class AlarmReceiver : BroadcastReceiver() {
         }
 
         val builder = NotificationCompat.Builder(context!!, "mychannel01").apply{
-            setSmallIcon(R.drawable.my_project_1)
+            setSmallIcon(R.drawable.clock_black)
             setContentTitle("우리가족지킴이 알람!")
             setAutoCancel(true)
             setDefaults(NotificationCompat.DEFAULT_ALL)

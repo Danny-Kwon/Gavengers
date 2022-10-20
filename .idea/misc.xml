@@ -8,12 +8,19 @@
         <entry key="app/src/main/res/drawable/app_logo_style.xml" value="0.195" />
         <entry key="app/src/main/res/drawable/button_style.xml" value="0.1645" />
         <entry key="app/src/main/res/drawable/clock.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/clock_black.xml" value="0.1745" />
         <entry key="app/src/main/res/drawable/ic_baseline_list_24.xml" value="0.1285" />
+        <entry key="app/src/main/res/drawable/ic_baseline_list_24_red.xml" value="0.114" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/ic_baseline_settings_24_red.xml" value="0.114" />
         <entry key="app/src/main/res/drawable/ic_baseline_timer_24.xml" value="0.1695" />
+        <entry key="app/src/main/res/drawable/ic_baseline_timer_24_red.xml" value="0.1745" />
         <entry key="app/src/main/res/drawable/ic_baseline_timer_off_24.xml" value="0.1695" />
+        <entry key="app/src/main/res/drawable/ic_baseline_timer_off_24_black.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_timer_off_24_red.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ripple_custom.xml" value="0.177" />
         <entry key="app/src/main/res/drawable/shape.xml" value="0.1645" />
+        <entry key="app/src/main/res/drawable/shape_red.xml" value="0.202" />
         <entry key="app/src/main/res/layout/activity_dbview.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/activity_device.xml" value="0.22586872586872586" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />

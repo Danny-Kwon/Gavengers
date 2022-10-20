@@ -5,8 +5,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -37,10 +35,9 @@ class SecondActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivitySecondBinding.inflate(layoutInflater)
         val prefs = PreferencesUtil(applicationContext)
-        createNotificationChannel()
         devID = prefs.getString("ConnectedID", "0")
         setContentView(binding.root)
-        var tok: String = prefs.getString("tok", "Token Error")
+        val tok: String = prefs.getString("tok", "Token Error")
 
         val changeDevice = binding.changeDevice
         changeDevice.setOnClickListener{
@@ -94,13 +91,14 @@ class SecondActivity: AppCompatActivity() {
             nickname.text = "${user?.kakaoAccount?.profile?.nickname}님 $devID 기기로 접속하셨습니다."
         }
 
-        val settingButton = binding.setting // 알람 설정버튼
-        settingButton.setOnClickListener {
+        binding.clock.setOnClickListener{ // 큰 시계 뷰 클릭시 시간 고를 수 있음
             showTimeSettingPopup()
-            Handler(Looper.getMainLooper()).postDelayed({
-                binding.viewHour.text = prefs.getInt("hour", 12).toString()
-                binding.viewMinute.text = prefs.getInt("minute", 30).toString()
-            }, 10000)
+        }
+        val settingButton = binding.setting // 알람 설정버튼, 고른 시간으로 알람 진행
+        settingButton.setOnClickListener {
+            setAlarm(prefs.getInt("hour", 12), prefs.getInt("minute", 30))
+            binding.viewHour.text = prefs.getInt("hour", 12).toString()
+            binding.viewMinute.text = prefs.getInt("minute", 30).toString()
         }
 
         val setOffButton = binding.setOff // 알람 끄기 버튼
@@ -127,12 +125,13 @@ class SecondActivity: AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setAlarm(hour : Int, minute: Int){
+        createNotificationChannel()
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
         val calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
             set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, minute)
+            set(Calendar.MINUTE, (minute - 2))
         }
         pendingIntent = PendingIntent.getBroadcast(this,0,intent,
             PendingIntent.FLAG_IMMUTABLE)
@@ -190,7 +189,6 @@ class SecondActivity: AppCompatActivity() {
         }
         confirm.setOnClickListener{
             Toast.makeText(this, "설정된 알람: ${hour.value} 시 ${min.value} 분", Toast.LENGTH_SHORT).show()
-            setAlarm(prefs.getInt("hour", 12), prefs.getInt("min", 30))
             build.dismiss()
         }
         cancel.setOnClickListener{

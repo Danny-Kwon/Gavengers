@@ -53,8 +53,7 @@ class DeviceActivity : AppCompatActivity() {
             }
         }
         val tok1: String = prefs.getString("tok", "Token Error")
-
-        val data1 = User(userPk = prefs.getString("tok", "Token1"))
+        val data1 = User(userPk = tok1)
         api.registerUser(data1).enqueue(object : Callback<OkSign> {
             override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {
                 Log.d("log", response.toString())
