@@ -140,18 +140,19 @@ class SecondActivity: AppCompatActivity() {
         createNotificationChannel()
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
-        val calendar = Calendar.getInstance().apply {
+        val time = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
             set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, (minute - 2))
+            set(Calendar.MINUTE, minute)
+            set(Calendar.SECOND, 0)
         }
         pendingIntent = PendingIntent.getBroadcast(this,0,intent,
             PendingIntent.FLAG_IMMUTABLE)
         Toast.makeText(this, "알람 설정됨", Toast.LENGTH_SHORT).show()
 
-        alarmManager.setInexactRepeating(
-            AlarmManager.RTC_WAKEUP,calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,pendingIntent
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,time.timeInMillis,
+            pendingIntent
         )
     }
 
