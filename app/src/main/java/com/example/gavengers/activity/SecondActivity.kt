@@ -140,26 +140,31 @@ class SecondActivity: AppCompatActivity() {
         createNotificationChannel()
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmReceiver::class.java)
+        val yearNow = Calendar.getInstance().get(Calendar.YEAR)
+        val monthNow = Calendar.getInstance().get(Calendar.MONTH)
+        val dateNow = Calendar.getInstance().get(Calendar.DATE)
+        val hourNow = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        val minuteNow = Calendar.getInstance().get(Calendar.MINUTE)
         val time = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
-            if((Calendar.HOUR_OF_DAY >= hour) && (Calendar.MINUTE >= minute))
+            if((hourNow >= hour) && (minuteNow >= minute))
             {
-                if((Calendar.MONTH == 2) && (Calendar.DATE == 28)){
+                if((monthNow == 2) && (dateNow == 28)){
                     set(Calendar.MONTH, 3)
                     set(Calendar.DATE, 1)
-                }else if((Calendar.MONTH == 12) && (Calendar.DATE == 31)){
-                    set(Calendar.YEAR, (Calendar.YEAR + 1))
+                }else if((monthNow == 12) && (dateNow == 31)){
+                    set(Calendar.YEAR, (yearNow + 1))
                     set(Calendar.MONTH, 1)
                     set(Calendar.DATE, 1)
                 }
-                else if(((Calendar.MONTH == 1)||(Calendar.MONTH == 3)||(Calendar.MONTH == 5)||(Calendar.MONTH == 7)||(Calendar.MONTH == 8)||(Calendar.MONTH == 10))&&(Calendar.DATE == 31)){
-                    set(Calendar.MONTH, (Calendar.MONTH + 1))
+                else if(((monthNow == 1)||(monthNow == 3)||(monthNow == 5)||(monthNow == 7)||(monthNow == 8)||(monthNow == 10))&&(dateNow == 31)){
+                    set(Calendar.MONTH, (monthNow + 1))
                     set(Calendar.DATE, 1)
                 }else if(Calendar.DATE == 30){
-                    set(Calendar.MONTH, (Calendar.MONTH + 1))
+                    set(Calendar.MONTH, (monthNow + 1))
                     set(Calendar.DATE, 1)
                 }else{
-                    set(Calendar.DATE, (Calendar.DATE + 1))
+                    set(Calendar.DATE, (dateNow + 1))
                 }
                 set(Calendar.HOUR_OF_DAY, hour)
                 set(Calendar.MINUTE, minute)
