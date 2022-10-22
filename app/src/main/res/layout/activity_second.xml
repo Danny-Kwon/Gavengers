@@ -102,7 +102,7 @@
         android:layout_height="70dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@id/kakao_logout_button"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintEnd_toStartOf="@+id/setOff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline9"
         app:srcCompat="@drawable/ic_baseline_timer_24" />
@@ -114,7 +114,7 @@
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@id/kakao_logout_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toEndOf="@id/setting"
         app:layout_constraintTop_toBottomOf="@+id/guideline9"
         app:srcCompat="@drawable/ic_baseline_timer_off_24" />
 
@@ -146,7 +146,7 @@
         android:fontFamily="@font/nixgon_b"
         android:textSize="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/clock"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintEnd_toStartOf="@id/colon"
         app:layout_constraintStart_toStartOf="@+id/clock"
         app:layout_constraintTop_toTopOf="@+id/clock"
         app:layout_constraintVertical_bias="0.5" />
@@ -198,16 +198,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/clock"
         app:layout_constraintEnd_toEndOf="@+id/clock"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toEndOf="@id/colon"
         app:layout_constraintTop_toTopOf="@+id/clock"
         app:layout_constraintVertical_bias="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="196dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -223,29 +216,15 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="523dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="262dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="131dp" />
     <ImageButton
         android:id="@+id/dbView"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline9"
         app:layout_constraintVertical_bias="0.84"
         app:srcCompat="@drawable/ic_baseline_list_24" />
 

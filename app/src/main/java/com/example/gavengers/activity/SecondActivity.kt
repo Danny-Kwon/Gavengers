@@ -142,9 +142,33 @@ class SecondActivity: AppCompatActivity() {
         val intent = Intent(this, AlarmReceiver::class.java)
         val time = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
-            set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, minute)
-            set(Calendar.SECOND, 0)
+            if((Calendar.HOUR_OF_DAY >= hour) && (Calendar.MINUTE >= minute))
+            {
+                if((Calendar.MONTH == 2) && (Calendar.DATE == 28)){
+                    set(Calendar.MONTH, 3)
+                    set(Calendar.DATE, 1)
+                }else if((Calendar.MONTH == 12) && (Calendar.DATE == 31)){
+                    set(Calendar.YEAR, (Calendar.YEAR + 1))
+                    set(Calendar.MONTH, 1)
+                    set(Calendar.DATE, 1)
+                }
+                else if(((Calendar.MONTH == 1)||(Calendar.MONTH == 3)||(Calendar.MONTH == 5)||(Calendar.MONTH == 7)||(Calendar.MONTH == 8)||(Calendar.MONTH == 10))&&(Calendar.DATE == 31)){
+                    set(Calendar.MONTH, (Calendar.MONTH + 1))
+                    set(Calendar.DATE, 1)
+                }else if(Calendar.DATE == 30){
+                    set(Calendar.MONTH, (Calendar.MONTH + 1))
+                    set(Calendar.DATE, 1)
+                }else{
+                    set(Calendar.DATE, (Calendar.DATE + 1))
+                }
+                set(Calendar.HOUR_OF_DAY, hour)
+                set(Calendar.MINUTE, minute)
+                set(Calendar.SECOND, 0)
+            }else{
+                set(Calendar.HOUR_OF_DAY, hour)
+                set(Calendar.MINUTE, minute)
+                set(Calendar.SECOND, 0)
+            }
         }
         pendingIntent = PendingIntent.getBroadcast(this,0,intent,
             PendingIntent.FLAG_IMMUTABLE)
