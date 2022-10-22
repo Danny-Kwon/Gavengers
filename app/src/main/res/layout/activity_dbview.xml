@@ -25,9 +25,10 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cdv"
         android:layout_width="0dp"
-        android:layout_height="500dp"
+        android:layout_height="560dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="40dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="16dp"
         app:layout_constraintBottom_toTopOf="@id/guideline14"
@@ -52,21 +53,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="206dp" />
+        app:layout_constraintGuide_end="196dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="309dp" />
+        app:layout_constraintGuide_end="294dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="103dp" />
+        app:layout_constraintGuide_end="98dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline14"
@@ -79,7 +80,7 @@
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:background="@drawable/ripple_custom"
             android:fontFamily="@font/nixgon_m"
             android:shadowColor="#00B0FF"
@@ -96,7 +97,7 @@
             android:id="@+id/battery_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:background="@drawable/ripple_custom"
             android:fontFamily="@font/nixgon_m"
             android:shadowColor="#00B0FF"
@@ -113,7 +114,7 @@
             android:id="@+id/power_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:background="@drawable/ripple_custom"
             android:fontFamily="@font/nixgon_m"
             android:shadowColor="#00B0FF"
@@ -130,7 +131,7 @@
             android:id="@+id/refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:background="@drawable/ripple_custom"
             android:fontFamily="@font/nixgon_m"
             android:shadowColor="#00B0FF"

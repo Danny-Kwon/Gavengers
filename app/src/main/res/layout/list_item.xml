@@ -47,7 +47,7 @@
                 android:textColor="@color/dark_blue"
                 android:textStyle="bold"
                 android:text="출입 시간: "
-                android:textSize="20sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/device_id"
                 app:layout_constraintTop_toBottomOf="@+id/device_id" />
@@ -60,7 +60,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="배터리: "
                 android:textSize="15sp"
-                android:layout_marginStart="40dp"
+                app:layout_constraintEnd_toStartOf="@id/in_out_info"
                 app:layout_constraintStart_toEndOf="@+id/device_id"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,10 +69,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
                 android:text="출입정보: "
                 android:textSize="15sp"
-                android:layout_marginStart="40dp"
-                app:layout_constraintStart_toEndOf="@id/power_info"
+                android:layout_marginStart="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

@@ -34,8 +34,6 @@
         android:text=""
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/LL4" />
     <Button
         android:id="@+id/kakao_logout_button"
@@ -103,10 +101,10 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintBottom_toTopOf="@id/kakao_logout_button"
         app:layout_constraintEnd_toStartOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/guideline9"
         app:srcCompat="@drawable/ic_baseline_timer_24" />
 
     <ImageButton
@@ -114,10 +112,10 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@android:color/transparent"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintBottom_toTopOf="@id/kakao_logout_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/guideline9"
         app:srcCompat="@drawable/ic_baseline_timer_off_24" />
 
     <ImageButton
@@ -209,7 +207,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="211dp" />
+        app:layout_constraintGuide_begin="196dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -230,14 +228,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="276dp" />
+        app:layout_constraintGuide_begin="262dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="137dp" />
+        app:layout_constraintGuide_begin="131dp" />
     <ImageButton
         android:id="@+id/dbView"
         android:layout_width="50dp"

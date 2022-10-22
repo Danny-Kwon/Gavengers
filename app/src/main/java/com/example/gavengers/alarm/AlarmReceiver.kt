@@ -26,7 +26,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val builder = NotificationCompat.Builder(context!!, "mychannel01").apply{
             setSmallIcon(R.drawable.clock_black)
             setContentTitle("우리가족지킴이")
-            setContentText("${prefs?.getString("name", "이름 오류")}님 ${prefs?.getString("ConnectedID", "기기값 오류")}기기의 출입 내역을 확인해주세요.")
+            setContentText("${prefs?.getString("name", "이름 오류")}님 어르신의 출입 내역을 확인해주세요.")
             setAutoCancel(true)
             setDefaults(NotificationCompat.DEFAULT_ALL)
             priority = NotificationCompat.PRIORITY_HIGH
