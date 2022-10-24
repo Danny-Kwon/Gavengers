@@ -41,6 +41,7 @@ class DeviceActivity : AppCompatActivity() {
                 prefs.setString("name", nickname!!)
             }
         }
+        binding.kakaoId.text = prefs.getString("name", "error")
         var tok : String
         //카카오 토큰값 저장 변수
         UserApiClient.instance.accessTokenInfo{tokenInfo, error ->
@@ -88,7 +89,7 @@ class DeviceActivity : AppCompatActivity() {
             val id: String = binding.deviceInput.text.toString()
             prefs.setString("ConnectedID", id)
             Toast.makeText(applicationContext, "$id 기기로 접속합니다.", Toast.LENGTH_SHORT).show()
-            val intent = Intent(applicationContext, SecondActivity::class.java)
+            val intent = Intent(applicationContext, MenuActivity::class.java)
             startActivity(intent)
         }
 
@@ -108,7 +109,7 @@ class DeviceActivity : AppCompatActivity() {
                     }
                 }
                 setNegativeButton("취소"){ _:DialogInterface, _: Int ->
-                    Toast.makeText(context, "기기 추가하지 않음", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "기기 추가 취소", Toast.LENGTH_SHORT).show()
                 }
                 show()
             }
@@ -135,7 +136,7 @@ class DeviceActivity : AppCompatActivity() {
                     }
                 }
                 setNegativeButton("취소"){ _:DialogInterface, _:Int ->
-                    Toast.makeText(context, "기기 제거하지 않음", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "기기 삭제 취소", Toast.LENGTH_SHORT).show()
                 }
                 show()
             }

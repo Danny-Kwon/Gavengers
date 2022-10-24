@@ -25,7 +25,7 @@ import retrofit2.Response
 import java.util.*
 
 class SecondActivity: AppCompatActivity() {
-    private val api = APIS.create()
+
     private lateinit var devID : String
 
     private lateinit var alarmManager: AlarmManager
@@ -47,63 +47,11 @@ class SecondActivity: AppCompatActivity() {
                 Toast.makeText(this, "현재 설정된 알람 없음.", Toast.LENGTH_SHORT).show()
             }
         }
-        val tok: String = prefs.getString("tok", "Token Error")
-
-        val changeDevice = binding.changeDevice
-        changeDevice.setOnClickListener{
-            val intent = Intent(this, DeviceActivity::class.java)
-            startActivity(intent)
-        }
-
-        val kakaoLogoutButton = binding.kakaoLogoutButton // 로그아웃 버튼
-
-        kakaoLogoutButton.setOnClickListener {
-            UserApiClient.instance.logout { error ->
-                if (error != null) {
-                    Toast.makeText(this, "로그아웃 실패 $error", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_SHORT).show()
-                }
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                finish()
-            }
-        }
-
-        val kakaoUnlinkButton = binding.kakaoUnlinkButton // 회원 탈퇴 버튼
-
-        kakaoUnlinkButton.setOnClickListener {
-            val data = User(userPk = tok)
-            api.deleteUser(data).enqueue(object : Callback<OkSign>{
-                override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {
-                    Log.d("deleteUser", "fail")
-                    if (response.body()?.okSign.toString().isNotEmpty())
-                        Log.d("log", response.toString())
-                }
-                override fun onFailure(call: Call<OkSign>, t: Throwable) {
-                    Log.d("deleteUser", "fail")
-                }
-            })
-            UserApiClient.instance.unlink { error ->
-                if (error != null) {
-                    Toast.makeText(this, "회원 탈퇴 실패 $error", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "회원 탈퇴 성공", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                    finish()
-                }
-            }
-        }
-
-        val nickname = binding.nickname // 상단 닉네임 표시 뷰
-        UserApiClient.instance.me { user, _ ->
-            nickname.text = "${user?.kakaoAccount?.profile?.nickname}님 $devID 기기로 접속하셨습니다."
-        }
 
         binding.clock.setOnClickListener{ // 큰 시계 뷰 클릭시 시간 고를 수 있음
             showTimeSettingPopup()
         }
+
         val settingButton = binding.setting // 알람 설정버튼, 고른 시간으로 알람 진행
         settingButton.setOnClickListener {
             setAlarm(prefs.getInt("hour", 12), prefs.getInt("minute", 30))
@@ -126,12 +74,6 @@ class SecondActivity: AppCompatActivity() {
                 }
                 show()
             }
-        }
-
-        val dbViewButton = binding.dbView
-        dbViewButton.setOnClickListener {
-            val intentView = Intent(this, DBViewActivity::class.java)
-            startActivity(intentView)
         }
     }
 
@@ -177,7 +119,7 @@ class SecondActivity: AppCompatActivity() {
         }
         pendingIntent = PendingIntent.getBroadcast(this,0,intent,
             PendingIntent.FLAG_IMMUTABLE)
-        Toast.makeText(this, "알람 설정됨", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "$hour 시 $minute 분 에 알람 설정됨", Toast.LENGTH_SHORT).show()
 
         alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,time.timeInMillis,
@@ -230,7 +172,7 @@ class SecondActivity: AppCompatActivity() {
             }
         }
         confirm.setOnClickListener{
-            Toast.makeText(this, "설정된 알람: ${hour.value} 시 ${min.value} 분", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "시간 선택 후 ‘알람 켜기’ 버튼을 누르십시오.", Toast.LENGTH_SHORT).show()
             build.dismiss()
         }
         cancel.setOnClickListener{

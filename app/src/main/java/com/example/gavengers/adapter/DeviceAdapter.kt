@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gavengers.database.DeviceData
 import com.example.gavengers.databinding.ListDeviceBinding
+import java.util.*
 
 class DeviceAdapter : RecyclerView.Adapter<DeviceAdapter.ItemViewHolder>(){
     var items = ArrayList<DeviceData>()
@@ -28,10 +29,8 @@ class DeviceAdapter : RecyclerView.Adapter<DeviceAdapter.ItemViewHolder>(){
 
     class ItemViewHolder(binding: ListDeviceBinding): RecyclerView.ViewHolder(binding.root){
         private val deviceID = binding.devID
-        private val userID = binding.loginID
         fun bind(data: DeviceData){
             deviceID.text = data.deviceId
-            userID.text = data.userId
         }
     }
 }

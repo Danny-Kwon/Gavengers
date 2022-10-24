@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -27,9 +28,9 @@
                 android:id="@+id/ID"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:text="기기아이디: "
+                android:text="기기 번호 : "
                 android:fontFamily="@font/nixgon_b"
-                android:textSize="13sp"
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,39 +42,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"
-                android:text=""
                 android:fontFamily="@font/nixgon_b"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/login"
+                android:text=""
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/ID"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
-            <TextView
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="100dp"
-                android:text="사용자 닉네임: "
-                android:fontFamily="@font/nixgon_b"
-                android:textSize="13sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                android:id="@+id/loginID"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="8dp"
-                android:text=""
-                android:fontFamily="@font/nixgon_b"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/login"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_chainStyle="packed" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -29,10 +29,10 @@ class RetroViewAdapter(private val deviceList: ArrayList<Sensing>, val context: 
         private val powerInfo = binding.powerInfo
         @SuppressLint("SetTextI18n")
         fun bind(device: Sensing) {
-            deviceId.text = "기기아이디: " + device.deviceId
-            timeInfo.text = "출입 시간: " + device.date
-            inOutInfo.text = "출입 방향: " + device.state
-            powerInfo.text = "전원: " + device.power
+            deviceId.text = "기기 번호 : " + device.deviceId
+            timeInfo.text = "출입 시간 : " + device.date
+            inOutInfo.text = "출입 방향 : " + device.state
+            powerInfo.text = "전원 : " + device.power
         }
     }
 }

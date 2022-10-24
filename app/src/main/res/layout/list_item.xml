@@ -30,10 +30,9 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/nixgon_b"
-                android:text="기기아이디: "
+                android:text="기기번호 : "
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/time_info"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
@@ -46,8 +45,8 @@
                 android:fontFamily="@font/nixgon_m"
                 android:textColor="@color/dark_blue"
                 android:textStyle="bold"
-                android:text="출입 시간: "
-                android:textSize="15sp"
+                android:text="출입 시간 : "
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/device_id"
                 app:layout_constraintTop_toBottomOf="@+id/device_id" />
@@ -58,10 +57,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="20dp"
-                android:text="배터리: "
-                android:textSize="15sp"
-                app:layout_constraintEnd_toStartOf="@id/in_out_info"
-                app:layout_constraintStart_toEndOf="@+id/device_id"
+                android:fontFamily="@font/nixgon_b"
+                android:text="전원 : "
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/time_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/in_out_info"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -69,11 +70,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:text="출입정보: "
-                android:textSize="15sp"
+                app:layout_goneMarginStart="5dp"
+                android:fontFamily="@font/nixgon_b"
+                android:text="출입 방향 : "
+                android:textSize="16sp"
                 android:layout_marginStart="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/device_id"
+                app:layout_constraintEnd_toStartOf="@id/power_info"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

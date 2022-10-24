@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_200"
+    tools:context=".activity.MainActivity">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/LL4"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:text="메뉴"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:fontFamily="@font/nixgon_b"
+            android:background="#90CAF9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/nixgon_b"
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/LL4" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="301dp" />
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/applogo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageButton
+        android:id="@+id/setDevId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/image_button"
+        android:fontFamily="@font/nixgon_m"
+        android:shadowColor="#00B0FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:text="기기 변경"
+        app:layout_constraintStart_toEndOf="@id/enterAlarm"
+        app:layout_constraintTop_toBottomOf="@id/appLogo"
+        app:layout_constraintEnd_toStartOf="@id/enterMy"
+        app:srcCompat="@drawable/ic_baseline_change_circle_24"/>
+    <TextView
+        android:id="@+id/changeId"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nixgon_m"
+        android:shadowColor="#00B0FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:text="기기 변경"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/alarm"
+        app:layout_constraintEnd_toStartOf="@id/my"
+        app:layout_constraintTop_toBottomOf="@id/setDevId"/>
+
+    <ImageButton
+        android:id="@+id/enterAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/image_button"
+        app:layout_constraintStart_toEndOf="@id/enterValue"
+        app:layout_constraintTop_toBottomOf="@id/appLogo"
+        app:layout_constraintEnd_toStartOf="@id/setDevId"
+        app:srcCompat="@drawable/ic_baseline_access_time_24"/>
+    <TextView
+        android:id="@+id/alarm"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nixgon_m"
+        android:shadowColor="#00B0FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:text="알람 설정"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/value"
+        app:layout_constraintEnd_toStartOf="@id/changeId"
+        app:layout_constraintTop_toBottomOf="@id/enterAlarm"/>
+    <ImageButton
+        android:id="@+id/enterValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/image_button"
+        app:layout_constraintTop_toBottomOf="@id/appLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/enterAlarm"
+        app:srcCompat="@drawable/ic_baseline_search_24"/>
+    <TextView
+        android:id="@+id/value"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nixgon_m"
+        android:shadowColor="#00B0FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:text="기록 조회"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/alarm"
+        app:layout_constraintTop_toBottomOf="@id/enterValue"/>
+    <ImageButton
+        android:id="@+id/enterMy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/image_button"
+        app:layout_constraintTop_toBottomOf="@id/appLogo"
+        app:layout_constraintStart_toEndOf="@+id/setDevId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_settings_24"/>
+    <TextView
+        android:id="@+id/my"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nixgon_m"
+        android:shadowColor="#00B0FF"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="3"
+        android:text=" 설  정   "
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/changeId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enterMy"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
