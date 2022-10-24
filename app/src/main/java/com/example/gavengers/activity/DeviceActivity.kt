@@ -22,6 +22,7 @@ import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class DeviceActivity : AppCompatActivity() {
     private val api = APIS.create()
@@ -53,7 +54,7 @@ class DeviceActivity : AppCompatActivity() {
                 prefs.setString("tok", tok)
             }
         }
-        val tok1: String = prefs.getString("tok", "Token Error")
+        val tok1: String = prefs.getString("tok", "")
         val data1 = User(userPk = tok1)
         api.registerUser(data1).enqueue(object : Callback<OkSign> {
             override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {

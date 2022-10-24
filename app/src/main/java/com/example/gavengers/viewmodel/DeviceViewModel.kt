@@ -30,4 +30,9 @@ class DeviceViewModel(app: Application) : AndroidViewModel(app) {
         deviceDao.deleteDevice(entity)
         getAllIds()
     }
+
+    fun deleteAll(){
+        val deviceDao = DeviceDatabase.getDatabase((getApplication())).deviceDao()
+        deviceDao.deleteAll()
+    }
 }

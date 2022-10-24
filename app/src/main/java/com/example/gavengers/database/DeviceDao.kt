@@ -19,4 +19,7 @@ interface DeviceDao {
     //값 삭제
     @Delete
     fun deleteDevice(deviceData: DeviceData)
+
+    @Query("DELETE FROM device")
+    fun deleteAll()
 }

@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import com.example.gavengers.database.DeviceData
 import com.example.gavengers.databinding.ActivityMyPageBinding
 import com.example.gavengers.network.APIS
 import com.example.gavengers.network.OkSign
 import com.example.gavengers.network.User
+import com.example.gavengers.network.UserDevice
 import com.example.gavengers.sharedpreferences.PreferencesUtil
+import com.example.gavengers.viewmodel.DeviceViewModel
 import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,6 +22,7 @@ import retrofit2.Response
 
 class MyPageActivity : AppCompatActivity() {
     private val api = APIS.create()
+    lateinit var viewModel: DeviceViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMyPageBinding.inflate(layoutInflater)
@@ -48,6 +53,8 @@ class MyPageActivity : AppCompatActivity() {
 
         kakaoUnlinkButton.setOnClickListener {
             val data = User(userPk = tok)
+            viewModel = ViewModelProvider(this)[DeviceViewModel::class.java]
+            viewModel.deleteAll()
             api.deleteUser(data).enqueue(object : Callback<OkSign> {
                 override fun onResponse(call: Call<OkSign>, response: Response<OkSign>) {
                     Log.d("deleteUser", "fail")
@@ -69,5 +76,7 @@ class MyPageActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.kakaoId.text = prefs.getString("name", "error")
     }
 }
