@@ -30,11 +30,6 @@ class MyPageActivity : AppCompatActivity() {
         val prefs = PreferencesUtil(applicationContext)
         val tok: String = prefs.getString("tok", "Token Error")
 
-        binding.enterWeb.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://124.60.219.83:8080"))
-            startActivity(intent)
-        }
-
         val kakaoLogoutButton = binding.kakaoLogoutButton// 로그아웃 버튼
         kakaoLogoutButton.setOnClickListener {
             UserApiClient.instance.logout { error ->
