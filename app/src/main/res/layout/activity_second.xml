@@ -116,6 +116,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:text="일회성 알람으로, 알람이 한 번 울린 뒤 시간을 재설정해야 합니다."
         android:textColor="#000000"
         android:textSize="14sp"
