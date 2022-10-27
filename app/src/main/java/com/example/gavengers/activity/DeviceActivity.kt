@@ -122,8 +122,8 @@ class DeviceActivity : AppCompatActivity() {
             val builderItem = AlertdialogEdittextBinding.inflate(layoutInflater)
             val edittext = builderItem.editText
             with(builder){
-                setTitle("기기 제거")
-                setMessage("제거할 기기의 ID값을 입력하세요.")
+                setTitle("기기 삭제")
+                setMessage("삭제할 기기 번호를 입력하세요.")
                 setView(builderItem.root)
                 setPositiveButton("확인"){ _:DialogInterface, _: Int ->
                     if(edittext.text!=null){
