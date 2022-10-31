@@ -36,25 +36,25 @@ class DBViewActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<Rx>, response: Response<Rx>) {
                     if(response.body().toString().isNotEmpty()){
                         prefs.setString("RX", response.body()?.rx.toString())
+                        api.searchTx(data).enqueue(object: Callback<Tx>{ // 송신 배터리
+                            override fun onResponse(call: Call<Tx>, response: Response<Tx>) {
+                                if(response.body().toString().isNotEmpty()){
+                                    prefs.setString("TX", response.body()?.tx.toString())
+                                    Toast.makeText(applicationContext,
+                                        "송신 기기 배터리: ${prefs.getString("TX", "TX Error")}, 수신 기기 배터리: ${prefs.getString("RX", "RX Error")}",
+                                        Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            override fun onFailure(call: Call<Tx>, t: Throwable) {
+                                Log.d("TxBattery", "Error")
+                            }
+                        })
                     }
                 }
                 override fun onFailure(call: Call<Rx>, t: Throwable) {
                     Log.d("RxBattery", "Error")
                 }
             })
-            api.searchTx(data).enqueue(object: Callback<Tx>{ // 송신 배터리
-                override fun onResponse(call: Call<Tx>, response: Response<Tx>) {
-                    if(response.body().toString().isNotEmpty()){
-                        prefs.setString("TX", response.body()?.tx.toString())
-                    }
-                }
-                override fun onFailure(call: Call<Tx>, t: Throwable) {
-                    Log.d("TxBattery", "Error")
-                }
-            })
-            Toast.makeText(this,
-                "송신 기기 배터리: ${prefs.getString("TX", "TX Error")}, 수신 기기 배터리: ${prefs.getString("RX", "RX Error")}",
-                Toast.LENGTH_SHORT).show()
         }
 
         binding.powerButton.setOnClickListener{ // 전원 여부
@@ -70,7 +70,6 @@ class DBViewActivity : AppCompatActivity() {
                 }
             })
         }
-
         binding.refresh.setOnClickListener{
             loadAPIData()
         }

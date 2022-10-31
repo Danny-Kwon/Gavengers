@@ -40,9 +40,9 @@ class DeviceActivity : AppCompatActivity() {
             if (user != null) {
                 nickname = user.kakaoAccount?.profile?.nickname.toString()
                 prefs.setString("name", nickname!!)
+                binding.kakaoId.text = prefs.getString("name", "error")
             }
         }
-        binding.kakaoId.text = prefs.getString("name", "error")
         var tok : String
         //카카오 토큰값 저장 변수
         UserApiClient.instance.accessTokenInfo{tokenInfo, error ->
@@ -142,8 +142,6 @@ class DeviceActivity : AppCompatActivity() {
                 show()
             }
         }
-
-
     }
 
     private fun deviceToDB(tok: String, ID: String){
